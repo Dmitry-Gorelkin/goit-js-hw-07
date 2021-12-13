@@ -28,8 +28,7 @@ function openGalleryOriginal(e) {
 
   document.addEventListener("keydown", closeGalleryOriginal);
 
-  const onCloseEcape = document.querySelector(".basicLightbox");
-  onCloseEcape.addEventListener("click", CloseEcape, { once: true });
+  clearKeyEventListener();
 }
 
 function addGalleryOriginal(gallery) {
@@ -45,6 +44,11 @@ function closeGalleryOriginal(e) {
 
 function CloseEcape() {
   document.removeEventListener("keydown", closeGalleryOriginal);
+}
+
+function clearKeyEventListener() {
+  const onCloseEcape = document.querySelector(".basicLightbox");
+  onCloseEcape.addEventListener("click", CloseEcape, { once: true });
 }
 
 galleryContainer.insertAdjacentHTML("beforeend", gallerymarkup);
