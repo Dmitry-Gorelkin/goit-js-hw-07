@@ -37,7 +37,6 @@ function addGalleryOriginal(gallery) {
 }
 
 function closeGalleryOriginal(e) {
-  console.log(e);
   if (e.code === "Escape") {
     galleryOriginal.close();
     document.removeEventListener("keydown", closeGalleryOriginal);
