@@ -25,7 +25,6 @@ function openGalleryOriginal(e) {
   addGalleryOriginal(e.target.dataset.source);
 
   galleryOriginal.show();
-  console.log(galleryOriginal);
 
   document.addEventListener("keydown", closeGalleryOriginal);
 
