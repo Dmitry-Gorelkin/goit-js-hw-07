@@ -25,8 +25,12 @@ function openGalleryOriginal(e) {
   addGalleryOriginal(e.target.dataset.source);
 
   galleryOriginal.show();
+  console.log(galleryOriginal);
 
   document.addEventListener("keydown", closeGalleryOriginal);
+
+  const onCloseEcape = document.querySelector(".basicLightbox");
+  onCloseEcape.addEventListener("click", CloseEcape, { once: true });
 }
 
 function addGalleryOriginal(gallery) {
@@ -34,10 +38,15 @@ function addGalleryOriginal(gallery) {
 }
 
 function closeGalleryOriginal(e) {
+  console.log(e);
   if (e.code === "Escape") {
     galleryOriginal.close();
     document.removeEventListener("keydown", closeGalleryOriginal);
   }
+}
+
+function CloseEcape() {
+  document.removeEventListener("keydown", closeGalleryOriginal);
 }
 
 galleryContainer.insertAdjacentHTML("beforeend", gallerymarkup);
