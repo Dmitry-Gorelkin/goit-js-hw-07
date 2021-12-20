@@ -7,9 +7,9 @@ function onAddGallery(gallery) {
   return gallery
     .map(
       ({ preview, original, description }) =>
-        `<a class="gallery__item" href="${original}" onclick="return false">
+        `<li class="gallery__item"><a class="gallery__link" href="${original}" onclick="return false">
         <img class="gallery__image" src="${preview}" alt="${description}" />
-        </a>`
+        </a></li>`
     )
     .join("");
 }
