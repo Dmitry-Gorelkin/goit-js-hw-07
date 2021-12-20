@@ -3,6 +3,7 @@ import { galleryItems } from "./gallery-items.js";
 const galleryContainer = document.querySelector(".gallery");
 const gallerymarkup = onAddGallery(galleryItems);
 let galleryOriginal;
+let onCloseEcape;
 
 function onAddGallery(gallery) {
   return gallery
@@ -27,8 +28,8 @@ function openGalleryOriginal(e) {
   galleryOriginal.show();
 
   document.addEventListener("keydown", closeGalleryOriginal);
-
-  clearKeyEventListener();
+  onCloseEcape = document.querySelector(".basicLightbox");
+  onCloseEcape.addEventListener("click", CloseEcape);
 }
 
 function addGalleryOriginal(gallery) {
@@ -39,16 +40,13 @@ function closeGalleryOriginal(e) {
   if (e.code === "Escape") {
     galleryOriginal.close();
     document.removeEventListener("keydown", closeGalleryOriginal);
+    onCloseEcape.removeEventListener("click", CloseEcape);
   }
 }
 
 function CloseEcape() {
   document.removeEventListener("keydown", closeGalleryOriginal);
-}
-
-function clearKeyEventListener() {
-  const onCloseEcape = document.querySelector(".basicLightbox");
-  onCloseEcape.addEventListener("click", CloseEcape, { once: true });
+  onCloseEcape.removeEventListener("click", CloseEcape);
 }
 
 galleryContainer.insertAdjacentHTML("beforeend", gallerymarkup);
